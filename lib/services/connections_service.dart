@@ -26,10 +26,8 @@ class ConnectionsService {
         // If a user is announcing their presence, store the webSocket against the
         // userId and broadcast the current connections
         if (jsonData['type'] == 'announce_presence') {
-          print('received: $message \nAdding user & broadcasting present list');
           addAndBroadcast(webSocket, jsonData['userId'] as String);
         } else {
-          print('received: $message, broadcasting');
           broadcast('$message');
         }
       },
