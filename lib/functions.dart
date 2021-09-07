@@ -9,9 +9,7 @@ import 'package:web_socket_game_server/services/locator.dart';
 @CloudFunction()
 FutureOr<Response> function(Request request) async {
   // If there is no connections service already provided, create and provide one.
-  if (Locator.hasNoConnectionsService) {
-    Locator.provide(connectionsService: ConnectionsService());
-  }
+  Locator.provideConnectionsService(ConnectionsService(), overwrite: false);
 
   final connectionsService = Locator.getConnectionsService();
 
