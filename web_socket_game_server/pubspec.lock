@@ -529,11 +529,9 @@ packages:
   web_socket_game_server_types:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "48614f2e1077cf45c7cb43e6da29457ddc5dbbbb"
-      url: "https://github.com/adventures-in/web_socket_game_server_types.git"
-    source: git
+      path: "../web_socket_game_server_types"
+      relative: true
+    source: path
     version: "0.0.1"
   webkit_inspection_protocol:
     dependency: transitive
