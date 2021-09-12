@@ -4,4 +4,4 @@
 library web_socket_game_server_types;
 
 export 'src/presence/announce_presence.dart';
-export 'src/presence/present_set.dart';
+export 'src/presence/other_player_ids.dart';

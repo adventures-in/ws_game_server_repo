@@ -49,18 +49,21 @@ class ConnectionsService {
 
   void addAndBroadcast(WebSocketChannel ws, String userId) {
     presenceMap[ws] = userId;
-    _broadcastPresentList();
+    _broadcastOtherPlayerIds();
   }
 
   void removeAndBroadcast(WebSocketChannel ws) {
     presenceMap.remove(ws);
-    _broadcastPresentList();
+    _broadcastOtherPlayerIds();
   }
 
-  void _broadcastPresentList() {
-    final presentListMessage =
-        jsonEncode(PresentSet(ids: presenceMap.values.toISet()).toJson());
-    broadcast(presentListMessage);
+  void _broadcastOtherPlayerIds() {
+    for (final ws in presenceMap.keys) {
+      // make the "other players" list for this player and send
+      var otherIdsList = presenceMap.values.toISet().remove(presenceMap[ws]!);
+      final message = jsonEncode(OtherPlayerIds(ids: otherIdsList).toJson());
+      ws.sink.add(message);
+    }
   }
 
   void broadcast(String message) {
