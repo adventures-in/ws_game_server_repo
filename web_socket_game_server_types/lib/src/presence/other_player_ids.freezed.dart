@@ -22,7 +22,7 @@ class _$OtherPlayerIdsTearOff {
   const _$OtherPlayerIdsTearOff();
 
   _OtherPlayerIds call(
-      {String type = 'other_player_ids', required ISet<String> ids}) {
+      {String type = OtherPlayerIds.jsonType, required ISet<String> ids}) {
     return _OtherPlayerIds(
       type: type,
       ids: ids,
@@ -125,12 +125,12 @@ class __$OtherPlayerIdsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_OtherPlayerIds implements _OtherPlayerIds {
-  _$_OtherPlayerIds({this.type = 'other_player_ids', required this.ids});
+  _$_OtherPlayerIds({this.type = OtherPlayerIds.jsonType, required this.ids});
 
   factory _$_OtherPlayerIds.fromJson(Map<String, dynamic> json) =>
       _$$_OtherPlayerIdsFromJson(json);
 
-  @JsonKey(defaultValue: 'other_player_ids')
+  @JsonKey(defaultValue: OtherPlayerIds.jsonType)
   @override
   final String type;
   @override

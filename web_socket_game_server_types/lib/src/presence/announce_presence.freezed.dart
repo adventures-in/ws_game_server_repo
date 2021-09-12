@@ -21,7 +21,8 @@ AnnouncePresence _$AnnouncePresenceFromJson(Map<String, dynamic> json) {
 class _$AnnouncePresenceTearOff {
   const _$AnnouncePresenceTearOff();
 
-  _AnnouncePresence call(String userId, {String type = 'announce_presence'}) {
+  _AnnouncePresence call(String userId,
+      {String type = AnnouncePresence.jsonType}) {
     return _AnnouncePresence(
       userId,
       type: type,
@@ -124,14 +125,14 @@ class __$AnnouncePresenceCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AnnouncePresence implements _AnnouncePresence {
-  _$_AnnouncePresence(this.userId, {this.type = 'announce_presence'});
+  _$_AnnouncePresence(this.userId, {this.type = AnnouncePresence.jsonType});
 
   factory _$_AnnouncePresence.fromJson(Map<String, dynamic> json) =>
       _$$_AnnouncePresenceFromJson(json);
 
   @override
   final String userId;
-  @JsonKey(defaultValue: 'announce_presence')
+  @JsonKey(defaultValue: AnnouncePresence.jsonType)
   @override
   final String type;
 

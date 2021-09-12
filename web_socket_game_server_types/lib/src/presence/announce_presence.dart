@@ -5,8 +5,9 @@ part 'announce_presence.g.dart';
 
 @freezed
 class AnnouncePresence with _$AnnouncePresence {
+  static const String jsonType = 'announce_presence';
   factory AnnouncePresence(String userId,
-      {@Default('announce_presence') String type}) = _AnnouncePresence;
+      {@Default(AnnouncePresence.jsonType) String type}) = _AnnouncePresence;
 
   factory AnnouncePresence.fromJson(Map<String, Object?> json) =>
       _$AnnouncePresenceFromJson(json);

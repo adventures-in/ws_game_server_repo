@@ -26,13 +26,16 @@ class ConnectionsService {
         final jsonData = jsonDecode(message);
         // If a user is announcing their presence, store the webSocket against the
         // userId and broadcast the current connections
-        if (jsonData['type'] == 'announce_presence') {
+        if (jsonData['type'] == AnnouncePresence.jsonType) {
           print(
               'server received: $message \nAdding user & broadcasting other player list');
           addAndBroadcast(webSocket, jsonData['userId'] as String);
-        } else {
+        }
+        if (jsonData['type'] == OtherPlayerIds.jsonType) {
           print('server received: $message, broadcasting');
           broadcast('$message');
+        } else {
+          throw Exception('Unknown json type in websocket stream');
         }
       },
       onError: (error) {

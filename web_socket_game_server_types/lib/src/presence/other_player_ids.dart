@@ -6,8 +6,9 @@ part 'other_player_ids.g.dart';
 
 @freezed
 class OtherPlayerIds with _$OtherPlayerIds {
+  static const String jsonType = 'other_player_ids';
   factory OtherPlayerIds(
-      {@Default('other_player_ids') String type,
+      {@Default(OtherPlayerIds.jsonType) String type,
       required ISet<String> ids}) = _OtherPlayerIds;
 
   factory OtherPlayerIds.fromJson(Map<String, Object?> json) =>
