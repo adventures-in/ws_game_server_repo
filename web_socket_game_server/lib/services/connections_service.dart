@@ -7,7 +7,7 @@ import 'package:web_socket_game_server_types/web_socket_game_server_types.dart';
 /// All of the user connections are kept by the [ConnectionsService] object,
 /// which keeps a map of [WebSocketChannel]s to userIds.
 ///
-/// When a user connection is added or removed the [PresentList] is broadcast.
+/// When a user connection is added or removed the [OtherPlayerIds] is broadcast.
 class ConnectionsService {
   // We can constructor inject the message handler function used by shelf_web_socket
   ConnectionsService([Function(WebSocketChannel)? messageHandler]) {
@@ -28,7 +28,7 @@ class ConnectionsService {
         // userId and broadcast the current connections
         if (jsonData['type'] == 'announce_presence') {
           print(
-              'server received: $message \nAdding user & broadcasting present list');
+              'server received: $message \nAdding user & broadcasting other player list');
           addAndBroadcast(webSocket, jsonData['userId'] as String);
         } else {
           print('server received: $message, broadcasting');
