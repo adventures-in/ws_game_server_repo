@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'other_player_ids.dart';
+part of 'other_player_ids_message.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,57 +13,59 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-OtherPlayerIds _$OtherPlayerIdsFromJson(Map<String, dynamic> json) {
-  return _OtherPlayerIds.fromJson(json);
+OtherPlayerIdsMessage _$OtherPlayerIdsMessageFromJson(
+    Map<String, dynamic> json) {
+  return _OtherPlayerIdsMessage.fromJson(json);
 }
 
 /// @nodoc
-class _$OtherPlayerIdsTearOff {
-  const _$OtherPlayerIdsTearOff();
+class _$OtherPlayerIdsMessageTearOff {
+  const _$OtherPlayerIdsMessageTearOff();
 
-  _OtherPlayerIds call(
-      {String type = OtherPlayerIds.jsonType, required ISet<String> ids}) {
-    return _OtherPlayerIds(
+  _OtherPlayerIdsMessage call(
+      {String type = OtherPlayerIdsMessage.jsonType,
+      required ISet<String> ids}) {
+    return _OtherPlayerIdsMessage(
       type: type,
       ids: ids,
     );
   }
 
-  OtherPlayerIds fromJson(Map<String, Object> json) {
-    return OtherPlayerIds.fromJson(json);
+  OtherPlayerIdsMessage fromJson(Map<String, Object> json) {
+    return OtherPlayerIdsMessage.fromJson(json);
   }
 }
 
 /// @nodoc
-const $OtherPlayerIds = _$OtherPlayerIdsTearOff();
+const $OtherPlayerIdsMessage = _$OtherPlayerIdsMessageTearOff();
 
 /// @nodoc
-mixin _$OtherPlayerIds {
+mixin _$OtherPlayerIdsMessage {
   String get type => throw _privateConstructorUsedError;
   ISet<String> get ids => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OtherPlayerIdsCopyWith<OtherPlayerIds> get copyWith =>
+  $OtherPlayerIdsMessageCopyWith<OtherPlayerIdsMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OtherPlayerIdsCopyWith<$Res> {
-  factory $OtherPlayerIdsCopyWith(
-          OtherPlayerIds value, $Res Function(OtherPlayerIds) then) =
-      _$OtherPlayerIdsCopyWithImpl<$Res>;
+abstract class $OtherPlayerIdsMessageCopyWith<$Res> {
+  factory $OtherPlayerIdsMessageCopyWith(OtherPlayerIdsMessage value,
+          $Res Function(OtherPlayerIdsMessage) then) =
+      _$OtherPlayerIdsMessageCopyWithImpl<$Res>;
   $Res call({String type, ISet<String> ids});
 }
 
 /// @nodoc
-class _$OtherPlayerIdsCopyWithImpl<$Res>
-    implements $OtherPlayerIdsCopyWith<$Res> {
-  _$OtherPlayerIdsCopyWithImpl(this._value, this._then);
+class _$OtherPlayerIdsMessageCopyWithImpl<$Res>
+    implements $OtherPlayerIdsMessageCopyWith<$Res> {
+  _$OtherPlayerIdsMessageCopyWithImpl(this._value, this._then);
 
-  final OtherPlayerIds _value;
+  final OtherPlayerIdsMessage _value;
   // ignore: unused_field
-  final $Res Function(OtherPlayerIds) _then;
+  final $Res Function(OtherPlayerIdsMessage) _then;
 
   @override
   $Res call({
@@ -84,32 +86,32 @@ class _$OtherPlayerIdsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$OtherPlayerIdsCopyWith<$Res>
-    implements $OtherPlayerIdsCopyWith<$Res> {
-  factory _$OtherPlayerIdsCopyWith(
-          _OtherPlayerIds value, $Res Function(_OtherPlayerIds) then) =
-      __$OtherPlayerIdsCopyWithImpl<$Res>;
+abstract class _$OtherPlayerIdsMessageCopyWith<$Res>
+    implements $OtherPlayerIdsMessageCopyWith<$Res> {
+  factory _$OtherPlayerIdsMessageCopyWith(_OtherPlayerIdsMessage value,
+          $Res Function(_OtherPlayerIdsMessage) then) =
+      __$OtherPlayerIdsMessageCopyWithImpl<$Res>;
   @override
   $Res call({String type, ISet<String> ids});
 }
 
 /// @nodoc
-class __$OtherPlayerIdsCopyWithImpl<$Res>
-    extends _$OtherPlayerIdsCopyWithImpl<$Res>
-    implements _$OtherPlayerIdsCopyWith<$Res> {
-  __$OtherPlayerIdsCopyWithImpl(
-      _OtherPlayerIds _value, $Res Function(_OtherPlayerIds) _then)
-      : super(_value, (v) => _then(v as _OtherPlayerIds));
+class __$OtherPlayerIdsMessageCopyWithImpl<$Res>
+    extends _$OtherPlayerIdsMessageCopyWithImpl<$Res>
+    implements _$OtherPlayerIdsMessageCopyWith<$Res> {
+  __$OtherPlayerIdsMessageCopyWithImpl(_OtherPlayerIdsMessage _value,
+      $Res Function(_OtherPlayerIdsMessage) _then)
+      : super(_value, (v) => _then(v as _OtherPlayerIdsMessage));
 
   @override
-  _OtherPlayerIds get _value => super._value as _OtherPlayerIds;
+  _OtherPlayerIdsMessage get _value => super._value as _OtherPlayerIdsMessage;
 
   @override
   $Res call({
     Object? type = freezed,
     Object? ids = freezed,
   }) {
-    return _then(_OtherPlayerIds(
+    return _then(_OtherPlayerIdsMessage(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -124,13 +126,14 @@ class __$OtherPlayerIdsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OtherPlayerIds implements _OtherPlayerIds {
-  _$_OtherPlayerIds({this.type = OtherPlayerIds.jsonType, required this.ids});
+class _$_OtherPlayerIdsMessage implements _OtherPlayerIdsMessage {
+  _$_OtherPlayerIdsMessage(
+      {this.type = OtherPlayerIdsMessage.jsonType, required this.ids});
 
-  factory _$_OtherPlayerIds.fromJson(Map<String, dynamic> json) =>
-      _$$_OtherPlayerIdsFromJson(json);
+  factory _$_OtherPlayerIdsMessage.fromJson(Map<String, dynamic> json) =>
+      _$$_OtherPlayerIdsMessageFromJson(json);
 
-  @JsonKey(defaultValue: OtherPlayerIds.jsonType)
+  @JsonKey(defaultValue: OtherPlayerIdsMessage.jsonType)
   @override
   final String type;
   @override
@@ -138,13 +141,13 @@ class _$_OtherPlayerIds implements _OtherPlayerIds {
 
   @override
   String toString() {
-    return 'OtherPlayerIds(type: $type, ids: $ids)';
+    return 'OtherPlayerIdsMessage(type: $type, ids: $ids)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OtherPlayerIds &&
+        (other is _OtherPlayerIdsMessage &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.ids, ids) ||
@@ -159,21 +162,22 @@ class _$_OtherPlayerIds implements _OtherPlayerIds {
 
   @JsonKey(ignore: true)
   @override
-  _$OtherPlayerIdsCopyWith<_OtherPlayerIds> get copyWith =>
-      __$OtherPlayerIdsCopyWithImpl<_OtherPlayerIds>(this, _$identity);
+  _$OtherPlayerIdsMessageCopyWith<_OtherPlayerIdsMessage> get copyWith =>
+      __$OtherPlayerIdsMessageCopyWithImpl<_OtherPlayerIdsMessage>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OtherPlayerIdsToJson(this);
+    return _$$_OtherPlayerIdsMessageToJson(this);
   }
 }
 
-abstract class _OtherPlayerIds implements OtherPlayerIds {
-  factory _OtherPlayerIds({String type, required ISet<String> ids}) =
-      _$_OtherPlayerIds;
+abstract class _OtherPlayerIdsMessage implements OtherPlayerIdsMessage {
+  factory _OtherPlayerIdsMessage({String type, required ISet<String> ids}) =
+      _$_OtherPlayerIdsMessage;
 
-  factory _OtherPlayerIds.fromJson(Map<String, dynamic> json) =
-      _$_OtherPlayerIds.fromJson;
+  factory _OtherPlayerIdsMessage.fromJson(Map<String, dynamic> json) =
+      _$_OtherPlayerIdsMessage.fromJson;
 
   @override
   String get type => throw _privateConstructorUsedError;
@@ -181,6 +185,6 @@ abstract class _OtherPlayerIds implements OtherPlayerIds {
   ISet<String> get ids => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OtherPlayerIdsCopyWith<_OtherPlayerIds> get copyWith =>
+  _$OtherPlayerIdsMessageCopyWith<_OtherPlayerIdsMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }

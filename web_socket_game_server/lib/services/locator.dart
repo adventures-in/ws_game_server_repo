@@ -16,10 +16,15 @@ class Locator {
     _firestoreService = service;
   }
 
-  static void provideConnectionsService(ConnectionsService service,
-      {bool overwrite = true}) {
-    if (overwrite == false && _connectionsService != null) return;
-    _connectionsService = service;
+  // Sets _connectionsService if not already set
+  static void provide({ConnectionsService? connectionsService}) {
+    _connectionsService ??= connectionsService;
+  }
+
+  // Sets _connectionsService to the default, if not already set
+  static ConnectionsService provideDefaultConnectionsService() {
+    _connectionsService ??= ConnectionsService();
+    return _connectionsService!;
   }
 
   static bool get hasFirestoreService => _firestoreService != null;

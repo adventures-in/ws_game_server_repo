@@ -26,16 +26,18 @@ class ConnectionsService {
         final jsonData = jsonDecode(message);
         // If a user is announcing their presence, store the webSocket against the
         // userId and broadcast the current connections
-        if (jsonData['type'] == AnnouncePresence.jsonType) {
+        if (jsonData['type'] == PresentMessage.jsonType) {
           print(
               'server received: $message \nAdding user & broadcasting other player list');
-          addAndBroadcast(webSocket, jsonData['userId'] as String);
-        }
-        if (jsonData['type'] == OtherPlayerIds.jsonType) {
+          _addAndBroadcast(webSocket, jsonData['userId'] as String);
+        } else if (jsonData['type'] == OtherPlayerIdsMessage.jsonType) {
+          print('server received: $message, broadcasting other player ids');
+          _broadcastOtherPlayerIds();
+        } else if (jsonData['type'] == PlayerPathMessage.jsonType) {
           print('server received: $message, broadcasting');
-          broadcast('$message');
+          _broadcast('$message');
         } else {
-          throw Exception('Unknown json type in websocket stream');
+          throw Exception('Unknown json type in websocket stream: $jsonData');
         }
       },
       onError: (error) {
@@ -43,19 +45,19 @@ class ConnectionsService {
         webSocket.sink.add('$error');
       },
       onDone: () {
-        removeAndBroadcast(webSocket);
+        _removeAndBroadcast(webSocket);
       },
     );
   }
 
   Function(WebSocketChannel) get messageHandler => _messageHandler;
 
-  void addAndBroadcast(WebSocketChannel ws, String userId) {
+  void _addAndBroadcast(WebSocketChannel ws, String userId) {
     presenceMap[ws] = userId;
     _broadcastOtherPlayerIds();
   }
 
-  void removeAndBroadcast(WebSocketChannel ws) {
+  void _removeAndBroadcast(WebSocketChannel ws) {
     presenceMap.remove(ws);
     _broadcastOtherPlayerIds();
   }
@@ -64,12 +66,13 @@ class ConnectionsService {
     for (final ws in presenceMap.keys) {
       // make the "other players" list for this player and send
       var otherIdsList = presenceMap.values.toISet().remove(presenceMap[ws]!);
-      final message = jsonEncode(OtherPlayerIds(ids: otherIdsList).toJson());
+      final message =
+          jsonEncode(OtherPlayerIdsMessage(ids: otherIdsList).toJson());
       ws.sink.add(message);
     }
   }
 
-  void broadcast(String message) {
+  void _broadcast(String message) {
     for (final ws in presenceMap.keys) {
       ws.sink.add(message);
     }
