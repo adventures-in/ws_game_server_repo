@@ -4,13 +4,13 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_game_server_types/web_socket_game_server_types.dart';
 
-/// All of the user connections are kept by the [ConnectionsService] object,
+/// All of the user connections are kept by the [ClientConnectionsService] object,
 /// which keeps a map of [WebSocketChannel]s to userIds.
 ///
 /// When a user connection is added or removed the [OtherPlayerIds] is broadcast.
-class ConnectionsService {
+class ClientConnectionsService {
   // We can constructor inject the message handler function used by shelf_web_socket
-  ConnectionsService([Function(WebSocketChannel)? messageHandler]) {
+  ClientConnectionsService([Function(WebSocketChannel)? messageHandler]) {
     _messageHandler = messageHandler ?? defaultMessageHandler;
   }
 
@@ -22,20 +22,20 @@ class ConnectionsService {
   void defaultMessageHandler(WebSocketChannel webSocket) {
     // Now attach a listener to the websocket that will perform the ongoing logic
     webSocket.stream.listen(
-      (message) {
-        final jsonData = jsonDecode(message);
+      (jsonString) {
+        final jsonData = jsonDecode(jsonString);
         // If a user is announcing their presence, store the webSocket against the
         // userId and broadcast the current connections
         if (jsonData['type'] == PresentMessage.jsonType) {
           print(
-              'server received: $message \nAdding user & broadcasting other player list');
+              'server received: $jsonString \nAdding user & broadcasting other player list');
           _addAndBroadcast(webSocket, jsonData['userId'] as String);
         } else if (jsonData['type'] == OtherPlayerIdsMessage.jsonType) {
-          print('server received: $message, broadcasting other player ids');
+          print('server received: $jsonString, broadcasting other player ids');
           _broadcastOtherPlayerIds();
         } else if (jsonData['type'] == PlayerPathMessage.jsonType) {
-          print('server received: $message, broadcasting');
-          _broadcast('$message');
+          print('server received: $jsonString, broadcasting');
+          _broadcastPlayerPath(jsonData);
         } else {
           throw Exception('Unknown json type in websocket stream: $jsonData');
         }
@@ -69,6 +69,15 @@ class ConnectionsService {
       final message =
           jsonEncode(OtherPlayerIdsMessage(ids: otherIdsList).toJson());
       ws.sink.add(message);
+    }
+  }
+
+  void _broadcastPlayerPath(JsonMap jsonData) {
+    var message = PlayerPathMessage.fromJson(jsonData);
+    for (final ws in presenceMap.keys) {
+      if (presenceMap[ws]! != message.userId) {
+        ws.sink.add(jsonEncode(message.toJson()));
+      }
     }
   }
 

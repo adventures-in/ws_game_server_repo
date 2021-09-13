@@ -7,8 +7,9 @@ import 'package:web_socket_game_server/services/locator.dart';
 
 @CloudFunction()
 FutureOr<Response> function(Request request) async {
-  // If there is no connections service already provided, provide the default.
-  final connectionsService = Locator.provideDefaultConnectionsService();
+  // If there is no client connections service already provided, provide the default.
+  final clientConnectionsService =
+      Locator.provideDefaultClientConnectionsService();
 
-  return webSocketHandler(connectionsService.messageHandler)(request);
+  return webSocketHandler(clientConnectionsService.messageHandler)(request);
 }
